@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:conv="clr-namespace:App2.Converters;assembly=App2"
+             mc:Ignorable="d"
+             x:Class="App2.PaginaEditarAnexos"
+                            xmlns:control="clr-namespace:App2.Controls"
+
+        Title="Anexos"        
+             
+>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:ByteToImageSourceConverter x:Key="convImage"/>
+        </ResourceDictionary>
+
+        
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem  x:Name="inserir"
+                 IconImageSource="inserir.png"
+                 Order="Primary"
+            Clicked="ToolbarItem_Clicked"
+                 Priority="0"
+           
+            
+            />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <RelativeLayout>
+            <ScrollView>
+                <StackLayout >
+                   
+                    <ListView x:Name="listAnexo" HasUnevenRows="True"  ItemSelected="ListAnexo_ItemSelected"   >
+
+                        <ListView.ItemTemplate>
+
+
+                            <DataTemplate >
+                                <ViewCell>
+                                    <SwipeView>
+
+                                        <SwipeView.RightItems>
+                                            <SwipeItems Mode="Reveal" >
+
+                                                <SwipeItem  Text="Delete"   BackgroundColor="LightPink" Invoked="SwipeItem_Invoked"   CommandParameter="{Binding .}"  IsVisible="True"  />
+
+
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
+
+                                        <StackLayout Orientation="Horizontal" Padding="5" >
+                                            <Image 
+                                        Source="{Binding FilePath,Converter={StaticResource convImage}}"  WidthRequest="90" HeightRequest="90"   />
+
+                                            <StackLayout HorizontalOptions="StartAndExpand" >
+                                                <Label Text="{Binding dataFoto}" VerticalOptions="CenterAndExpand" TextColor="#597FAC" FontAttributes="Bold"/>
+                                            </StackLayout>
+
+                                        </StackLayout>
+                                    </SwipeView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+               
+
+                </StackLayout>
+
+            </ScrollView>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

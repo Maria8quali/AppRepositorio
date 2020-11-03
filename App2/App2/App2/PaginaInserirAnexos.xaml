@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App2.PaginaInserirAnexos"
+             xmlns:conv="clr-namespace:App2.Converters;assembly=App2"
+            Title="Adicionar Anexo"
+             NavigationPage.HasBackButton="False"
+
+             >
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:ByteToImageSourceConverter x:Key="convImage"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+
+                <!--	Frame	específico	para	a	parte	de	fotografia	-->
+                <Frame	Grid.Row="0" Grid.Column="0" OutlineColor="#597FAC" HasShadow="True" x:Name="framefoto">
+                    <StackLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition	Height="20"/>
+                                <RowDefinition	Height="50"/>
+                                <RowDefinition	Height="50"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition	Width="30*"/>
+                                <ColumnDefinition	Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label	Grid.Row="0" Grid.Column="2" Text="OcorrenciaId" HorizontalOptions="End" Font="Bold,	24" TextColor="Blue" x:Name="idocorrencia" VerticalOptions="Center" IsVisible="False"/>
+                            <Button	Grid.Row="1" Grid.Column="0" Text="Câmera" x:Name="BtnCamera" BackgroundColor="#597FAC" TextColor="White" />
+                            <Button	Grid.Row="2" Grid.Column="0" Text="Álbum" x:Name="BtnAlbum" BackgroundColor="#597FAC" TextColor="White" />
+                            <Image	Source="{Binding Foto,Converter={StaticResource convImage}}" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="2" x:Name="fotoOcorrencia" HorizontalOptions="End"/>
+
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+                <Frame	Grid.Row="1" Grid.Column="0" OutlineColor="#597FAC"
+                            HasShadow="True"
+			Padding="0">
+                    <StackLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition	Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition	Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button	Grid.Row="0" Grid.Column="0"  FontAttributes="Bold" FontSize="15"    Clicked="BtnGravarClick" TextColor="#597FAC" BackgroundColor="white"  ImageSource="verificado.png" Text="Salvar"  CornerRadius="30" BorderColor="#597FAC" x:Name="save_button"  BorderWidth="2"/>
+
+                        </Grid>
+                        <Button   ImageSource="anterior.png" Text="Voltar"  FontAttributes="Bold" FontSize="15" TextColor="#597FAC" BackgroundColor="white" Clicked="Button_Clicked_Back" BorderColor="#597FAC"  BorderWidth="2" CornerRadius="30" x:Name="back_button" />
+
+                    </StackLayout>
+                </Frame>
+
+            </Grid>
+
+     
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

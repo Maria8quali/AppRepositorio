@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App2"
+             x:Class="App2.MainPage"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False"
+             >
+
+
+
+    <Grid>
+        <StackLayout Padding="0" Margin="0">
+            <Frame BackgroundColor="White" HeightRequest="130" HorizontalOptions="FillAndExpand">
+                <Image Source="Image" VerticalOptions="Start"/>
+
+            </Frame>
+        </StackLayout>
+        <StackLayout Margin="15,190,15,0">
+            <Frame BackgroundColor="White" HasShadow="True"  HorizontalOptions="FillAndExpand" HeightRequest="320"  >
+
+                <StackLayout>
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <Label Text="LOGIN" FontAttributes="Bold" FontSize="Medium"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="0,25,0,0">
+                        <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0" CornerRadius="50" HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal">
+                                <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="25" WidthRequest="25" Padding="0" Margin="7,7,0,7" HorizontalOptions="Start">
+
+
+                                </Frame>
+                                <Entry  Placeholder="Email "  FontSize="16" x:Name="email" Margin="0,0,15,0" HorizontalOptions="FillAndExpand"/>
+
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0,20,0,0" CornerRadius="50" HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal">
+                                <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="25" WidthRequest="25" Padding="0" Margin="7,7,0,7" HorizontalOptions="Start">
+
+
+                                </Frame>
+                                <Entry  Placeholder="Senha" FontSize="16" x:Name="senha" IsPassword="True" Margin="0,0,15,0" HorizontalOptions="FillAndExpand" />
+
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                
+                    <Button Text="SIGN IN" x:Name="logar" AnchorX="300"  Clicked="Button_Clicked" BackgroundColor="#597FAC"  TextColor="White" CornerRadius="30"/>
+                    <StackLayout>
+                        <Grid>
+                            <BoxView BackgroundColor="DarkGray" HeightRequest="1" Margin="50" HorizontalOptions="CenterAndExpand"/>
+
+                            <Label HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Não possui uma conta? ">
+
+                                        </Span>
+                                        <Span Text="Registre-se." TextColor="Blue" TextDecorations="Underline">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                
+                                            </Span.GestureRecognizers>
+
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+
+
+
+
+
+
+
+
+    </Grid>
+    
+    
+ 
+    
+    
+
+</ContentPage>

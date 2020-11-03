@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App2.PaginaEditarOcorrencia"
+             Title="Editar Ocorrências"
+             NavigationPage.HasBackButton="False"
+             >
+    <ContentPage.Content>
+        <ScrollView>
+            <Frame CornerRadius="5" BorderColor="#597FAC">
+                <StackLayout>
+                    <Label Text="Identificação do emissor" TextColor="SteelBlue" FontSize="18" Margin="10" />
+                    <Label HeightRequest="1" BackgroundColor="#e3e3e3"/>
+                    <Frame CornerRadius="3" HasShadow="True" BorderColor="#597FAC">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Mostrar meu nome" TextColor="#597FAC" FontSize="15" Margin="10"/>
+                            <CheckBox Color="#597FAC" x:Name="ShowName" />
+                            <Label Text="Anônimo" TextColor="#597FAC" Margin="10"/>
+                            <CheckBox Color="#597FAC" x:Name="Anonimous"/>
+                        </StackLayout>
+                    </Frame>
+                    <Label	x:Name="ocorrenciaId" Text="{Binding OcorrenciaId}" HorizontalOptions="End" Font="Bold,	24" TextColor="Blue"  VerticalOptions="Center" IsVisible="False"/>
+
+                    <Label Text="Descrição da ocorrencia" TextColor="SteelBlue" FontSize="18" Margin="10"/>
+                    <Label HeightRequest="1" BackgroundColor="#e3e3e3"/>
+                    <Frame BackgroundColor="Transparent" BorderColor="#597FAC" Padding="0" Margin="0" CornerRadius="3" HasShadow="True" >
+                        <Editor Placeholder="Digite algo.."  Text="{Binding DescricaoOcorrencia}"   x:Name="descricaoOcorrencia" FontSize="17" Focused="DescricaoOcorrencia_Focused" Unfocused="DescricaoOcorrencia_Unfocused"   AutoSize="TextChanges" />
+
+
+                    </Frame>
+
+                    <Label HeightRequest="1" BackgroundColor="#e3e3e3"/>
+
+
+                    <Frame CornerRadius="5" HasShadow="true" BorderColor="#597FAC">
+                        <StackLayout>
+                            <Label Text="Anexar arquivo" TextColor="#597FAC" FontSize="18" />
+                            <Label HeightRequest="1" BackgroundColor="#e3e3e3"/>
+
+                            <Button ImageSource="anexo" Text="Selecione um arquivo.." HorizontalOptions="Start" Clicked="Botao_Anexo" Margin="10" CommandParameter="" />
+                        </StackLayout>
+                    </Frame>
+
+
+                    <Label Text="Disposição inicial" TextColor="#597FAC" FontSize="18" Margin="10"/>
+                    <Label HeightRequest="1" BackgroundColor="#e3e3e3"/>
+                    <Frame BackgroundColor="Transparent" BorderColor="#597FAC" Padding="0" Margin="0" CornerRadius="3" HasShadow="True"  >
+                        <Editor Placeholder="Digite algo.."  Text="{Binding DispoInicial}"  x:Name="dispoInicial"  FontSize="17" Focused="DispoInicial_Focused" Unfocused="DispoInicial_Unfocused"  AutoSize="TextChanges" />
+
+
+
+                    </Frame>
+                    <Label HeightRequest="1" BackgroundColor="#e3e3e3"/>
+
+
+                    <StackLayout Orientation="Horizontal">
+                        <Button ImageSource="anterior.png" x:Name="voltar" Text="Voltar" Clicked="Button_Clicked_Back" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" CornerRadius="30" BackgroundColor="White" BorderColor="#597FAC"  BorderWidth="2" />
+
+                        <Button ImageSource="verificado.png" x:Name="salvar" Text="Salvar" Clicked="Button_Clicked_Save" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" CornerRadius="30"  BackgroundColor="White" BorderColor="#597FAC"  BorderWidth="2" CommandParameter="{Binding .}" /> 
+                    </StackLayout>
+                    <ActivityIndicator Color="SteelBlue" x:Name="botaoCarregamento" IsRunning="False" IsEnabled="False" />
+
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

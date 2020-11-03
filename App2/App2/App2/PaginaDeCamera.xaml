@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dualscreen="clr-namespace:Xamarin.Forms.DualScreen;assembly=Xamarin.Forms.DualScreen"
+
+             mc:Ignorable="d"
+             x:Class="App2.PaginaDeCamera"
+             Title="Selecionar Foto"
+             NavigationPage.HasBackButton="True"
+             xmlns:conv="clr-namespace:App2.Converters;assembly=App2"
+         
+             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:ByteToImageSourceConverter x:Key="convImage"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+  
+
+        <ContentPage.Content>
+        <ScrollView>
+
+           
+
+                <StackLayout	VerticalOptions="Start">
+                <Grid HorizontalOptions="FillAndExpand" >
+                    <ListView x:Name="listAnexo" HeightRequest="500" HorizontalOptions="FillAndExpand" ItemSelected="ListAnexo_ItemSelected" BackgroundColor="AliceBlue" >
+                        
+                        <ListView.ItemTemplate>
+                            
+                            <DataTemplate  >
+                                <ViewCell>
+                                    <SwipeView>
+
+                                        <SwipeView.RightItems>
+                                            <SwipeItems Mode="Reveal" >
+
+                                                <SwipeItem  Text="Delete"   BackgroundColor="LightPink" Invoked="SwipeItem_Delete"   CommandParameter="{Binding .}"  IsVisible="True"  />
+
+
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
+
+                                        <StackLayout Orientation="Horizontal" Padding="5" >
+                                            <Image 
+                                        Source="{Binding FilePath,Converter={StaticResource convImage}}"  WidthRequest="90" HeightRequest="90"   />
+
+                                            <StackLayout HorizontalOptions="StartAndExpand" >
+                                                <Label Text="{Binding dataFoto}" VerticalOptions="CenterAndExpand" TextColor="#597FAC" FontAttributes="Bold"/>
+                                            </StackLayout>
+
+                                        </StackLayout>
+                                    </SwipeView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+                <Grid>
+     
+                    <!--	Frame	específico	para	a	parte	de	fotografia	-->
+                    <Frame	Grid.Row="0" Grid.Column="0" OutlineColor="#597FAC" HasShadow="True" x:Name="framefoto">
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition	Height="20"/>
+                                    <RowDefinition	Height="50"/>
+                                    <RowDefinition	Height="50"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition	Width="30*"/>
+                                    <ColumnDefinition	Width="70*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label	Grid.Row="0" Grid.Column="2" Text="OcorrenciaId" HorizontalOptions="End" Font="Bold,	24" TextColor="Blue" x:Name="idocorrencia" VerticalOptions="Center" IsVisible="False"/>
+                                <Button	Grid.Row="1" Grid.Column="0" Text="Câmera" x:Name="BtnCamera" BackgroundColor="#597FAC" TextColor="White" />
+                                <Button	Grid.Row="2" Grid.Column="0" Text="Álbum" x:Name="BtnAlbum" BackgroundColor="#597FAC" TextColor="White"/>
+                                <Image	Source="{Binding FilePath,Converter={StaticResource convImage}}" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="2" x:Name="fotoOcorrencia" HorizontalOptions="End"/>
+                                
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame	Grid.Row="1" Grid.Column="0" OutlineColor="#597FAC"
+                            HasShadow="True"
+			Padding="0">
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition	Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition	Width="50*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button	Grid.Row="0" Grid.Column="0" x:Name="botaoSave"  FontSize="15"  FontAttributes="Bold"  Clicked="BtnGravarClick"  TextColor="#597FAC"  BackgroundColor="white"  ImageSource="verificado.png" Text="Adicionar"  CornerRadius="30" BorderColor="#597FAC"  BorderWidth="2"/>
+
+                            </Grid>
+                            <Button x:Name="botaoBack"  ImageSource="anterior.png" Text="Salvar e voltar" FontAttributes="Bold" FontSize="15" TextColor="#597FAC" BackgroundColor="white" Clicked="Button_Clicked_Save" BorderColor="#597FAC"  BorderWidth="2" CornerRadius="30" />
+
+                        </StackLayout>
+                    </Frame>
+
+                </Grid>
+    
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

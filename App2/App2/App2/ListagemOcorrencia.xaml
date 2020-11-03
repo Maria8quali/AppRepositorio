@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+               xmlns:control="clr-namespace:App2.Controls"
+
+
+             x:Class="App2.ListagemOcorrencia"
+             
+             Title="Lista de Ocorrência">
+        <RelativeLayout>
+            <StackLayout
+            
+            
+
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+                <SearchBar x:Name="SearchConteudo" TextChanged="SearchConteudo_TextChanged" Placeholder="Pesquisar"  Focused="SearchConteudo_Focused" Unfocused="SearchConteudo_Unfocused"  />
+                <Label Margin="10"/>
+                <Label x:Name="naotem" IsVisible="False"/>
+                
+            <Label Text="Ocorrências" TextColor="#597FAC" FontSize="Title" />
+            <Label Text="Filtros" FontSize="Subtitle" FontAttributes="Bold"  TextColor="#597FAC" />
+            <Label  HeightRequest="1" BackgroundColor="#597FAC"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Sincronizados" TextColor="#597FAC" FontSize="15" Margin="10"/>
+                <CheckBox Color="#597FAC" x:Name="sincronizado" CheckedChanged="sincronizado_CheckedChanged" />
+                <Label Text="Não sincronizados" TextColor="#597FAC" Margin="10"/>
+                <CheckBox Color="#597FAC" x:Name="naoSincronizado" CheckedChanged="naoSincronizado_CheckedChanged" />
+            </StackLayout>
+
+            <Label  HeightRequest="1" BackgroundColor="#597FAC"/>
+            <ListView x:Name="listOcorrencias" RowHeight="70" Scrolled="ListOcorrencias_Scrolled" 
+          RefreshControlColor="blue" >
+
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <ViewCell>
+                            <SwipeView WidthRequest="8" HeightRequest="8" >
+                                <SwipeView.LeftItems>
+                                    <SwipeItems Mode="Reveal" >
+                                        <SwipeItem  Text="Delete" x:Name="delete"    BackgroundColor="LightPink"    Invoked="SwipeItem_Delete" CommandParameter="{Binding .}"  IsVisible="True"  />
+                                        <SwipeItem IconImageSource="ciclo" BackgroundColor="White" Invoked="SwipeItem_Sincronizar" IsVisible="{Binding sincronizar}"   CommandParameter="{Binding .}"/>
+
+                                        <SwipeItem Text="Edit"  BackgroundColor="LightGray" Invoked="SwipeItem_View"  CommandParameter="{Binding .}" IsVisible="True"/>
+
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="500"/>
+                                        <ColumnDefinition Width="500"/>
+                                        <ColumnDefinition Width="500"/>
+
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout >
+
+                                        <Frame CornerRadius="10" BorderColor="#597FAC" BackgroundColor="AliceBlue">
+                                            <StackLayout Orientation="Horizontal" >
+                                                <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Start">
+                                                    <Label Text="Sincronizar"  FontSize="12" Grid.Row="2" Grid.Column="2" TextColor="LightPink" IsVisible="{Binding sincronizar}" FontAttributes="Bold"/>
+                                                </StackLayout>
+
+                                                <Label Text="Nome:"  TextColor="#597FAC" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" LineBreakMode="TailTruncation"   />
+                                                <Label Text="{Binding NomeUsuario}" FontSize="15"  Grid.Row="0" Grid.Column="0" LineBreakMode="TailTruncation"  />
+                                                <Label Text="Descrição:"  TextColor="#597FAC" FontAttributes="Bold" LineBreakMode="TailTruncation"    Grid.Row="2" Grid.Column="1"  />
+                                                    <StackLayout Orientation="Horizontal">
+                                                
+                                                    <Label Text="{Binding Descricao}" FontSize="15" LineBreakMode="CharacterWrap" MaxLines="2" Grid.Row="2" Grid.Column="2" />
+                                                </StackLayout>
+                                                <Label Margin="20" TextColor="White"/>
+
+
+                                            </StackLayout>
+
+
+                                        </Frame>
+                                    </StackLayout>
+
+                                </Grid>
+
+                            </SwipeView>
+                        </ViewCell>
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+        </StackLayout>
+
+            <control:FloatingButton     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-60}"
+                                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-60}"
+                                Clicked="BtnFloating_OnClicked"  x:Name="floatingButton"
+                                Text="&#xf067;">
+
+                <control:FloatingButton.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Regular"
+                                                       iOS="Font Awesome 5 Free" />
+
+                </control:FloatingButton.FontFamily>
+            </control:FloatingButton>
+
+        </RelativeLayout>
+
+
+
+</ContentPage>

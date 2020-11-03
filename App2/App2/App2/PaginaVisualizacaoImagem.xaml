@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:conv="clr-namespace:App2.Converters;assembly=App2"
+              xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+
+
+             mc:Ignorable="d"
+             x:Class="App2.PaginaVisualizacaoImagem"
+             Title="Visualizar Imagem"
+>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:ByteToImageSourceConverter x:Key="convImage"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <cards:CarouselView 
+            x:Name="listAnexo"  
+       
+        
+>
+        <cards:CarouselView.ItemTemplate>
+            <DataTemplate>
+                <ContentView>
+                    <Frame 
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        HeightRequest="700"
+                        WidthRequest="700"
+                        Padding="0" 
+                        HasShadow="false"
+                        IsClippedToBounds="true"
+                        CornerRadius="10"
+                        >
+
+
+                        <ffimage:CachedImage Source="{Binding FilePath,Converter={StaticResource convImage}}"/>
+
+                    </Frame>
+                </ContentView>
+            </DataTemplate>
+        </cards:CarouselView.ItemTemplate>
+        <controls:IndicatorsControl BackgroundColor="#597FAC" />
+        <controls:LeftArrowControl  BackgroundColor="#597FAC"/>
+        <controls:RightArrowControl  BackgroundColor="#597FAC"/>
+    </cards:CarouselView>
+    
+
+</ContentPage>
