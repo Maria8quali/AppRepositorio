@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-
+//Teste de commit para o github
 namespace App2
 {
     public partial class MainPage : ContentPage
